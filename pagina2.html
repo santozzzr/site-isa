@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 2 - Escolha</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Serif Text', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('img/fundo.jpeg'); /* Fundo da página 2 */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Barra de navegação */
+        .menu-bar {
+            position: fixed;
+            top: 40px;
+            left: 40px; /* Adiciona 1cm (aproximadamente 37px) a mais para a direita */
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 12px; /* Bordas arredondadas */
+            padding: 10px;
+        }
+
+        .menu-bar .menu-icon {
+            width: 30px; /* Diminui o tamanho do botão */
+            height: 30px; /* Diminui o tamanho do botão */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 10px; /* Bordas arredondadas do botão */
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .menu-bar .menu-icon div {
+            width: 30px; /* Diminui o tamanho dos riscos */
+            height: 4px; /* Diminui a altura dos riscos */
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* Menu que aparece ao clicar no botão */
+        .menu-options {
+            position: fixed;
+            top: 110px;
+            left: 40px; /* Adiciona 1cm (aproximadamente 37px) a mais para a direita */
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 7px;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left; /* Alinha o texto à esquerda */
+            width: 150px; /* Largura da caixa */
+            transition: all 0.3s ease; /* Animação suave ao abrir */
+        }
+
+        .menu-options a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-options a:hover {
+            color: #5f76bb;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        h1 {
+            font-family: 'DM Serif Text', serif;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            gap: 2cm;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.5s ease; /* Maior duração do zoom */
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-box:hover {
+            transform: scale(1.3); /* Zoom maior ao passar o mouse */
+        }
+
+        /* Texto que aparece quando o mouse passa sobre a imagem */
+        .image-box span {
+            display: none;
+            position: absolute;
+            bottom: -30px; /* Posiciona o texto abaixo da imagem */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .image-box:hover span {
+            display: block; /* Exibe o texto quando o mouse passa por cima */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegação -->
+    <div class="menu-bar">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Menu que aparece ao clicar no botão -->
+    <div class="menu-options" id="menu-options">
+        <a href="pagina7.html">Saiba mais</a>
+        <a href="pagina6.html">Ajuda</a> <!-- Redireciona para a página6 ao clicar -->
+    </div>
+
+    <div class="container">
+        <h1>Qual deseja escolher?</h1>
+        <div class="images-container">
+            <!-- Primeira imagem -->
+            <div class="image-box" onclick="window.location.href='pagina3.html'">
+                <img src="img/imagem4.jpeg" alt="Imagem 1">
+                <span>Presente</span> <!-- Texto que aparece ao passar o mouse -->
+            </div>
+            
+            <!-- Segunda imagem -->
+            <div class="image-box" onclick="window.location.href='pagina4.html'">
+                <img src="img/imagem5.jpeg" alt="Imagem 2">
+                <span>Namoro</span> <!-- Texto que aparece ao passar o mouse -->
+            </div>
+            
+            <!-- Terceira imagem -->
+            <div class="image-box" onclick="window.location.href='pagina5.html'">
+                <img src="img/imagem3.jpeg" alt="Imagem 3">
+                <span>Old girls</span> <!-- Texto que aparece ao passar o mouse -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir e fechar o menu
+        function toggleMenu() {
+            var menu = document.getElementById('menu-options');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+</html>

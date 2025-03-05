@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site da Isa</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Serif Text', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-image: url('img/imagem1.jpeg'); /* Agora imagem1 é a imagem de fundo fixa */
+            background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+            background-position: center center; /* Centraliza a imagem */
+            background-attachment: fixed; /* Garante que a imagem não se mova com o scroll */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao site da Isa!</h1>
+        <form id="welcomeForm">
+            <label for="name">Digite seu nome:</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome aqui" required>
+            <input type="submit" value="Enviar">
+        </form>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Captura o formulário e a área de mensagem
+        const form = document.getElementById('welcomeForm');
+        const messageDiv = document.getElementById('message');
+
+        // Adiciona um evento de submit ao formulário
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário de forma tradicional
+
+            // Captura o valor do campo de nome
+            const name = document.getElementById('name').value;
+
+            // Verifica se o nome é "Isabely"
+            if (name.trim().toLowerCase() === 'isabely') {
+                // Redireciona para a segunda página
+                window.location.href = 'pagina2.html'; // Altere para a URL desejada
+            } else {
+                // Exibe mensagem de erro se o nome não for "Isabely"
+                messageDiv.innerHTML = 'Errou? O site não é para você.';
+            }
+        });
+    </script>
+</body>
+</html>

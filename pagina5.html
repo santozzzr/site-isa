@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 5 - Old Girls</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Serif Text', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('img/fundoog.jpeg'); /* Fundo da página 5 */
+            background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+            background-position: center center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            align-items: center; /* Centraliza o conteúdo verticalmente */
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 1000px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .images-container {
+            display: flex;
+            justify-content: center;
+            gap: 2cm;
+            margin-top: 20px;
+        }
+        .image-box {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-box:hover {
+            transform: scale(1.1); /* Efeito de zoom */
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+        }
+        /* Estilo da caixinha de texto */
+        .text-box {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center; /* Alinha o texto no centro */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Old Girls</h1>
+        <div class="images-container">
+            <!-- Primeira imagem -->
+            <div class="image-box">
+                <img src="img/og1.jpeg" alt="Old Girls 1">
+            </div>
+            
+            <!-- Segunda imagem que vai mostrar o texto -->
+            <div class="image-box" id="secondImage">
+                <img src="img/og2.jpeg" alt="Old Girls 2">
+            </div>
+            
+            <!-- Terceira imagem -->
+            <div class="image-box">
+                <img src="img/og3.jpeg" alt="Old Girls 3">
+            </div>
+        </div>
+
+        <!-- Caixinha de texto que aparece ao clicar na segunda imagem -->
+        <div id="textBox" class="text-box">
+            Nessa aventura com as Old girls fomos conhecer o parque Ipanema, lá é um local lindo e eu tive a sorte de ir com o meu amor, um local lindo com uma mulher linda, lá conheci as tias dela e conversamos sobre tudo possível, uma ótima aventura!!
+        </div>
+    </div>
+
+    <!-- Botão de voltar para a Página 2 -->
+    <button class="back-button" onclick="window.location.href='pagina2.html'">Voltar para a Página 2</button>
+
+    <script>
+        // Quando a segunda imagem for clicada, mostra ou esconde o texto na caixinha
+        document.getElementById("secondImage").addEventListener("click", function() {
+            var textBox = document.getElementById("textBox");
+            // Alterna a visibilidade da caixinha de texto
+            if (textBox.style.display === "none" || textBox.style.display === "") {
+                textBox.style.display = "block"; // Exibe a caixinha de texto
+            } else {
+                textBox.style.display = "none"; // Esconde a caixinha de texto
+            }
+        });
+    </script>
+
+</body>
+</html>

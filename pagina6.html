@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda da Lauren</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Serif Text', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #465172;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-container {
+            margin: 20px;
+        }
+
+        .input-apelido {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .btn-ouvir {
+            padding: 10px 20px;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.2s ease;
+            display: none; /* Inicialmente escondido */
+        }
+
+        .btn-ouvir:hover {
+            background-color: #5a54e8;
+        }
+
+        #final-content {
+            display: none; /* Inicialmente escondido */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #final-content img {
+            width: 60%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        #voltar-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed; /* Fixa o botão na parte inferior */
+            bottom: 20px; /* Distância da parte inferior */
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+            display: none; /* Inicialmente escondido */
+        }
+
+        #voltar-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ajuda da Lauren</h1>
+
+    <div class="input-container">
+        <input type="text" id="apelido" class="input-apelido" placeholder="Digite um apelido carinhoso...">
+        <button onclick="verificarApelido()">Verificar</button>
+    </div>
+
+    <button id="btn-ouvir" class="btn-ouvir" onclick="playAudio()">Ouvir áudio</button>
+
+    <!-- Final content: imagem e áudio -->
+    <div id="final-content">
+        <img src="img/ultimafoto.jpeg" alt="Última foto">
+    </div>
+
+    <!-- Botão Voltar -->
+    <button id="voltar-btn" onclick="voltarParaPagina2()">Voltar para página 2</button>
+
+    <script>
+        let btnOuvir = document.getElementById('btn-ouvir');
+        let apelidoInput = document.getElementById('apelido');
+        let isCorrect = false;
+        let audio;
+        let finalContent = document.getElementById('final-content');
+        let voltarBtn = document.getElementById('voltar-btn');
+
+        // Função de verificação do apelido
+        function verificarApelido() {
+            let apelido = apelidoInput.value.toLowerCase();
+
+            if (apelido === 'mor') {  // Se o apelido for correto
+                isCorrect = true;
+                btnOuvir.style.display = 'block'; // Exibe o botão "Ouvir áudio"
+                
+                // Esconde os outros elementos
+                document.querySelector('h1').style.display = 'none';
+                document.querySelector('.input-container').style.display = 'none';
+            } else {
+                isCorrect = false; // Se o apelido for incorreto, não mostra o botão
+                btnOuvir.style.display = 'none';
+            }
+        }
+
+        // Função para reproduzir o áudio
+        function playAudio() {
+            if (isCorrect) {
+                // Carrega e toca o áudio
+                audio = new Audio('audio/audio.ogg');
+                audio.loop = true; // Define o áudio para tocar em loop
+                audio.play();
+
+                // Esconde o botão "Ouvir áudio" imediatamente após o clique
+                btnOuvir.style.display = 'none';
+
+                // Exibe a imagem "ultimafoto.jpeg" por 3 segundos
+                finalContent.style.display = 'flex'; // Exibe a imagem final
+                setTimeout(function() {
+                    finalContent.style.display = 'none'; // Esconde a imagem após 3 segundos
+
+                    // Exibe o botão "Voltar para página 2"
+                    voltarBtn.style.display = 'block';
+                }, 3000); // 3000 ms = 3 segundos
+            }
+        }
+
+        // Função para voltar para a página2
+        function voltarParaPagina2() {
+            window.location.href = "pagina2.html"; // Redireciona para "pagina2.html"
+        }
+
+    </script>
+
+</body>
+</html>
